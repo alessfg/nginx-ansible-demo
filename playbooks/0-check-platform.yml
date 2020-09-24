@@ -1,0 +1,8 @@
+---
+- hosts: aws_ec2
+  become: true
+  remote_user: "{{ hostvars[inventory_hostname].tags.user }}"
+  tasks:
+    - name: Print platforms
+      debug:
+        msg: "{{ ansible_facts['distribution'] }} {{ ansible_facts['distribution_version'] }}"
