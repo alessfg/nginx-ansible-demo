@@ -10,7 +10,7 @@ resource "aws_instance" "debian_9" {
   user_data = <<EOF
 #! /bin/bash
 apt update
-apt install -y python3 python3-apt
+apt install -y python3 python3-apt python-apt
 EOF
   tags = {
     Name   = "debian_9"
@@ -32,7 +32,7 @@ resource "aws_instance" "ubuntu_18" {
   user_data = <<EOF
 #! /bin/bash
 apt update
-apt install -y python3 python3-apt
+apt install -y python3 python3-apt python-apt
 EOF
   tags = {
     Name   = "ubuntu_18"
