@@ -1,6 +1,6 @@
-resource "aws_instance" "debian_9_13" {
+resource "aws_instance" "debian_9" {
   count         = 1
-  ami           = "ami-0e18a7cf6bec77ac9"
+  ami           = var.ami["debian_9"]
   instance_type = var.machine_type
   key_name      = var.key_name
   vpc_security_group_ids = [
@@ -13,7 +13,7 @@ apt update
 apt install -y python3 python3-apt
 EOF
   tags = {
-    Name   = "debian_9_13"
+    Name   = "debian_9"
     user   = "admin"
     author = var.key_name
     type   = "ansible"
@@ -22,7 +22,7 @@ EOF
 
 resource "aws_instance" "ubuntu_18" {
   count         = 1
-  ami           = "ami-03fac5402e10ea93b"
+  ami           = var.ami["ubuntu_18"]
   instance_type = var.machine_type
   key_name      = var.key_name
   vpc_security_group_ids = [
@@ -44,7 +44,7 @@ EOF
 
 resource "aws_instance" "centos_7" {
   count         = 1
-  ami           = "ami-098f55b4287a885ba"
+  ami           = var.ami["centos_7"]
   instance_type = var.machine_type
   key_name      = var.key_name
   vpc_security_group_ids = [
@@ -64,9 +64,9 @@ EOF
   }
 }
 
-resource "aws_instance" "rhel_7_7" {
+resource "aws_instance" "rhel_7" {
   count         = 1
-  ami           = "ami-07d8d14365439bc6e"
+  ami           = var.ami["rhel_7"]
   instance_type = var.machine_type
   key_name      = var.key_name
   vpc_security_group_ids = [
@@ -79,7 +79,7 @@ yum update
 yum install -y python3
 EOF
   tags = {
-    Name   = "rhel_7_7"
+    Name   = "rhel_7"
     user   = "ec2-user"
     author = var.key_name
     type   = "ansible"
