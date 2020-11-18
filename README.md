@@ -1,4 +1,4 @@
-# AnsibleFest 2020 - NGINX: Better with Ansible Demo
+# NGINX: Better with Ansible Demo
 
 ## Overview
 
@@ -17,6 +17,18 @@ Instructions on how to install Terraform can be found in the [Terraform website]
 This demo has been developed and tested with [maintained](https://docs.ansible.com/ansible/latest/reference_appendices/release_and_maintenance.html#release-status) versions of Ansible bigger than `2.9.10`. Backwards compatibility is not guaranteed.
 
 Instructions on how to install Ansible can be found in the [Ansible website](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
+
+You will also need to download the Ansible NGINX collection. To install the latest version tested in this demo, you can use:
+
+```
+ansible-galaxy collection install -r playbooks/requirements.yml
+```
+
+Alternatively, to install the latest stable version, you can use:
+
+```
+ansible-galaxy collection install nginxinc.nginx_core
+```
 
 ## Guide
 
@@ -39,7 +51,7 @@ Once you have configured your Terraform environment, you can either:
 And finally, once you are done playing with the Ansible playbooks provided, you can destroy the AWS infrastructure by either:
 
 *   Run [`./cleanup.sh`](cleanup.sh) to destroy your Terraform deployment.
-*   Run `terraform destroy` from within the `terraform directory`.
+*   Run `terraform destroy` from within the `terraform` directory.
 
 ### Ansible
 

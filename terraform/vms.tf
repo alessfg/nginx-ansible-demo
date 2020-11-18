@@ -1,6 +1,6 @@
 resource "aws_instance" "debian_9" {
-  count         = 1
-  ami           = var.ami["debian_9"]
+  count         = var.ami["debian_9"]["deploy"] ? 1 : 0
+  ami           = var.ami["debian_9"]["ami_id"]
   instance_type = var.machine_type
   key_name      = var.key_name
   vpc_security_group_ids = [
@@ -21,8 +21,8 @@ EOF
 }
 
 resource "aws_instance" "ubuntu_18" {
-  count         = 1
-  ami           = var.ami["ubuntu_18"]
+  count         = var.ami["ubuntu_18"]["deploy"] ? 1 : 0
+  ami           = var.ami["ubuntu_18"]["ami_id"]
   instance_type = var.machine_type
   key_name      = var.key_name
   vpc_security_group_ids = [
@@ -43,8 +43,8 @@ EOF
 }
 
 resource "aws_instance" "centos_7" {
-  count         = 1
-  ami           = var.ami["centos_7"]
+  count         = var.ami["centos_7"]["deploy"] ? 1 : 0
+  ami           = var.ami["centos_7"]["ami_id"]
   instance_type = var.machine_type
   key_name      = var.key_name
   vpc_security_group_ids = [
@@ -65,8 +65,8 @@ EOF
 }
 
 resource "aws_instance" "rhel_7" {
-  count         = 1
-  ami           = var.ami["rhel_7"]
+  count         = var.ami["rhel_7"]["deploy"] ? 1 : 0
+  ami           = var.ami["rhel_7"]["ami_id"]
   instance_type = var.machine_type
   key_name      = var.key_name
   vpc_security_group_ids = [
