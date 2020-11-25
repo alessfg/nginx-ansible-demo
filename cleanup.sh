@@ -1,2 +1,3 @@
 cd terraform \
-&& yes yes | terraform destroy
+&& terraform destroy -auto-approve \
+&& rm -rf .terraform
