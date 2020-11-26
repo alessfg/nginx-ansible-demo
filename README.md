@@ -27,7 +27,7 @@ ansible-galaxy collection install -r playbooks/requirements.yml
 Alternatively, to install the latest stable version, you can use:
 
 ```
-ansible-galaxy collection install nginxinc.nginx_core
+ansible-galaxy collection install nginxinc.nginx_core -f
 ```
 
 ## Guide
@@ -41,7 +41,7 @@ You can then run the sample playbooks provided to install and configure NGINX Pl
 To use the provided Terraform scripts, you need to:
 
 1.  Export your AWS credentials as environment variables (or alternatively, tweak the AWS provider in [`terraform/provider.tf`](terraform/provider.tf)).
-2.  If you wish to deploy your AWS infrastructure in a different region than the default, `us-west-1`, you will need to tweak the `region` and `ami` variables present in [`terraform/variables.tf`](terraform/variables.tf).
+2.  You will need to specify a `key_name` in [`terraform/variables.tf`](terraform/variables.tf) to determine how Ansible ssh's into your AWS instances (or, alternatively, use one of the many methods supported by Terraform to input variables). If you wish to deploy your AWS infrastructure in a different region than the default, `us-west-1`, you will need to tweak the `region` and `ami` variables too.
 
 Once you have configured your Terraform environment, you can either:
 

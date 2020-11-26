@@ -38,6 +38,5 @@ variable "machine_type" {
 
 variable "key_name" {
   description = "The key name used to ssh into your AWS instance"
-  default     = "alessandro"
   type        = string
 }

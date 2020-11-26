@@ -5,15 +5,17 @@
 *~
 \#*
 
-# OS Specific
+# OS Specific #
+###############
 Thumbs.db
 .DS_Store
 .vscode
 
-# Ansible specific
+# Ansible specific #
+####################
 *.retry
 
-# Ignore Terraform conf/state/backup files
+# Terraform specific #
+############################################
 .terraform
-*.tfstate
-*.backup
+*tfstate*
