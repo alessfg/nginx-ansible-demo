@@ -1,42 +1,92 @@
 variable "region" {
-  description = "Your target AWS region"
   default     = "us-west-1"
+  description = "Your target AWS region"
   type        = string
 }
 
-variable "ami" {
-  description = "AMI IDs to be deployed in AWS"
-  default = {
-    debian_9 = {
-      ami_id = "ami-0e18a7cf6bec77ac9"
-      deploy = true
-    }
-    ubuntu_18 = {
-      ami_id = "ami-03fac5402e10ea93b"
-      deploy = true
-    }
-    centos_7 = {
-      ami_id = "ami-098f55b4287a885ba"
-      deploy = true
-    }
-    rhel_7 = {
-      ami_id = "ami-07d8d14365439bc6e"
-      deploy = true
-    }
-  }
-  type = map(object({
-    ami_id = string
-    deploy = bool
-  }))
-}
-
 variable "machine_type" {
-  description = "The machine type of the AWS instance"
   default     = "t2.medium"
+  description = "The machine type of the AWS instance"
   type        = string
 }
 
 variable "key_name" {
   description = "The key name used to ssh into your AWS instance"
   type        = string
+}
+
+data "aws_ami" "debian" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["debian-10-amd64-*"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
+
+  owners = ["136693071363"]
+}
+
+data "aws_ami" "ubuntu" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server*"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
+
+  owners = ["099720109477"]
+}
+
+data "aws_ami" "centos" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["CentOS Linux 7 x86_64 HVM EBS ENA*"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
+
+  owners = ["679593333241"]
+}
+
+data "aws_ami" "rhel" {
+  most_recent = true
+
+  filter {
+    name   = "name"
+    values = ["RHEL-7.7_HVM-*"]
+  }
+  filter {
+    name   = "virtualization-type"
+    values = ["hvm"]
+  }
+  filter {
+    name   = "architecture"
+    values = ["x86_64"]
+  }
+
+  owners = ["309956199498"]
 }

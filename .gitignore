@@ -5,7 +5,7 @@
 *~
 \#*
 
-# OS Specific #
+# OS specific #
 ###############
 Thumbs.db
 .DS_Store
@@ -16,6 +16,7 @@ Thumbs.db
 *.retry
 
 # Terraform specific #
-############################################
+######################
 .terraform
 *tfstate*
+*.tfvars

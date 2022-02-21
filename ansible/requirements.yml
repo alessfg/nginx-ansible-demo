@@ -1,4 +1,6 @@
 ---
 collections:
+  - name: amazon.aws
+    version: 3.1.1
   - name: nginxinc.nginx_core
-    version: 0.2.0
+    version: 0.5.0
