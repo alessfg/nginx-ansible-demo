@@ -2,8 +2,8 @@ resource "aws_vpc" "main" {
   cidr_block           = "10.0.0.0/16"
   enable_dns_hostnames = true
   tags = {
-    name   = "aws-vpc-ansible"
-    author = var.key_name
+    Name  = "aws-vpc-ansible"
+    Owner = var.owner
   }
 }
 
@@ -12,8 +12,8 @@ resource "aws_subnet" "main" {
   cidr_block              = "10.0.0.0/24"
   map_public_ip_on_launch = true
   tags = {
-    name   = "aws-subnet-ansible"
-    author = var.key_name
+    Name  = "aws-subnet-ansible"
+    Owner = var.owner
   }
 }
 
@@ -22,8 +22,8 @@ resource "aws_security_group" "main" {
   description = "Security group for AWS NLB"
   vpc_id      = aws_vpc.main.id
   tags = {
-    name   = "aws-sec-grp-ansible"
-    author = var.key_name
+    Name  = "aws-sec-grp-ansible"
+    Owner = var.owner
   }
 
   ingress {
@@ -75,8 +75,8 @@ resource "aws_security_group" "main" {
 resource "aws_internet_gateway" "main" {
   vpc_id = aws_vpc.main.id
   tags = {
-    name   = "aws-gtwy-ansible"
-    author = var.key_name
+    Name  = "aws-gtwy-ansible"
+    Owner = var.owner
   }
 }
 

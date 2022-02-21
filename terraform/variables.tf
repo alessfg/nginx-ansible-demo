@@ -1,17 +1,23 @@
 variable "region" {
-  default     = "us-west-1"
   description = "Your target AWS region"
+  default     = "us-west-1"
   type        = string
 }
 
 variable "machine_type" {
-  default     = "t2.medium"
   description = "The machine type of the AWS instance"
+  default     = "t2.medium"
   type        = string
 }
 
 variable "key_name" {
   description = "The key name used to ssh into your AWS instance"
+  type        = string
+}
+
+variable "owner" {
+  description = "Owner of resources"
+  default     = var.key_name
   type        = string
 }
 
