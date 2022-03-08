@@ -17,7 +17,7 @@ variable "key_name" {
 
 variable "owner" {
   description = "Owner of resources"
-  default     = var.key_name
+  default     = "ansible-demo"
   type        = string
 }
 
