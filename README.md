@@ -16,13 +16,15 @@ Instructions on how to install Terraform can be found in the [Terraform website]
 
 ### Ansible
 
-This demo has been developed and tested with Ansible `2.10` through `2.12`.
+This demo has been developed and tested with Ansible `2.11` through `2.12`.
 
 Instructions on how to install Ansible can be found in the [Ansible website](https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html).
 
 You will also need to download the latest Ansible NGINX collection and the latest Ansible AWS collection. To install the latest versions, you can use:
 
 `ansible-galaxy collection install -r ansible/requirements.yml`
+
+Finally, in order to use the `amazon.aws` collection, you will need to install the `boto3` and `botocore` Python packages.
 
 ### NGINX Plus (Optional)
 

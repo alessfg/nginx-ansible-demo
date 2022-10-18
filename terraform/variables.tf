@@ -12,7 +12,8 @@ variable "machine_type" {
 
 variable "key_name" {
   description = "The key name used to ssh into your AWS instance"
-  type        = string
+  # default     = "johndoe"
+  type = string
 }
 
 variable "owner" {
@@ -45,7 +46,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64-server*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server*"]
   }
   filter {
     name   = "virtualization-type"
@@ -75,7 +76,7 @@ data "aws_ami" "centos" {
     values = ["x86_64"]
   }
 
-  owners = ["679593333241"]
+  owners = ["461800378586"]
 }
 
 data "aws_ami" "rhel" {
@@ -83,7 +84,7 @@ data "aws_ami" "rhel" {
 
   filter {
     name   = "name"
-    values = ["RHEL-7.7_HVM-*"]
+    values = ["RHEL-7.9_HVM-*"]
   }
   filter {
     name   = "virtualization-type"

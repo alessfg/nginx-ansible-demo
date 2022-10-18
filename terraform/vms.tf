@@ -19,7 +19,7 @@ EOF
   }
 }
 
-resource "aws_instance" "ubuntu_18" {
+resource "aws_instance" "ubuntu_20" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.machine_type
   key_name      = var.key_name
@@ -33,7 +33,7 @@ apt update
 apt install -y python3 python3-apt python-apt
 EOF
   tags = {
-    Name  = "ubuntu_18"
+    Name  = "ubuntu_20"
     Owner = var.owner
     user  = "ubuntu"
     type  = "ansible"
