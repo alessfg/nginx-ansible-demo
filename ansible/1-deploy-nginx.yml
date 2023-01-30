@@ -1,7 +1,8 @@
 ---
-- hosts: aws_ec2
+- name: Deploy NGINX Plus
+  hosts: aws_ec2
   become: true
-  remote_user: "{{ hostvars[inventory_hostname].tags.user }}"
+  remote_user: "{{ hostvars[inventory_hostname]['tags']['user'] }}"
   collections:
     - nginxinc.nginx_core
   roles:
@@ -9,8 +10,6 @@
       vars:
         nginx_type: plus
         nginx_license:
-          # certificate: <path/to/cert>
-          # key: <path/to/key>
-          certificate: ~/.ngxlicense/nginx-repo.crt
-          key: ~/.ngxlicense/nginx-repo.key
+          certificate: <path/to/cert>
+          key: <path/to/key>
         nginx_remove_license: false

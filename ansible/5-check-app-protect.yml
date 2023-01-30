@@ -1,11 +1,12 @@
 ---
-- hosts: aws_ec2
+- name: Check that NGINX App Protect is working as expected
+  hosts: aws_ec2
   become: true
-  remote_user: "{{ hostvars[inventory_hostname].tags.user }}"
+  remote_user: "{{ hostvars[inventory_hostname]['tags']['user'] }}"
   tasks:
     - name: Check that a page returns a status 200 and fail if the words Request Rejected are not in the page contents
-      uri:
+      ansible.builtin.uri:
         url: http://localhost/?v=<script>
         return_content: true
       register: this
-      failed_when: "'Request Rejected' not in this.content"
+      failed_when: "'Request Rejected' not in this['content']"

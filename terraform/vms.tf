@@ -1,4 +1,4 @@
-resource "aws_instance" "debian_10" {
+resource "aws_instance" "debian_11" {
   ami           = data.aws_ami.debian.id
   instance_type = var.machine_type
   key_name      = var.key_name
@@ -12,7 +12,7 @@ apt update
 apt install -y python3 python3-apt python-apt
 EOF
   tags = {
-    Name  = "debian_10"
+    Name  = "debian_11"
     Owner = var.owner
     user  = "admin"
     type  = "ansible"

@@ -1,8 +1,9 @@
 ---
-- hosts: aws_ec2
+- name: Check that all platforms have been deployed correctly by Terraform
+  hosts: aws_ec2
   become: true
-  remote_user: "{{ hostvars[inventory_hostname].tags.user }}"
+  remote_user: "{{ hostvars[inventory_hostname]['tags']['user'] }}"
   tasks:
     - name: Print platforms
-      debug:
+      ansible.builtin.debug:
         msg: "{{ ansible_facts['distribution'] }} {{ ansible_facts['distribution_version'] }}"

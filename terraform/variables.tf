@@ -27,7 +27,7 @@ data "aws_ami" "debian" {
 
   filter {
     name   = "name"
-    values = ["debian-10-amd64-*"]
+    values = ["debian-11-amd64-*"]
   }
   filter {
     name   = "virtualization-type"

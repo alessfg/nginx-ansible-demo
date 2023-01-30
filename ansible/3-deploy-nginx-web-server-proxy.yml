@@ -1,7 +1,8 @@
 ---
-- hosts: aws_ec2
+- name: Deploy an NGINX Plus reverse proxy load balancing between two NGINX Plus web servers
+  hosts: aws_ec2
   become: true
-  remote_user: "{{ hostvars[inventory_hostname].tags.user }}"
+  remote_user: "{{ hostvars[inventory_hostname]['tags']['user'] }}"
   collections:
     - nginxinc.nginx_core
   roles:
