@@ -3,10 +3,8 @@
   hosts: aws_ec2
   become: true
   remote_user: "{{ hostvars[inventory_hostname]['tags']['user'] }}"
-  collections:
-    - nginxinc.nginx_core
   roles:
-    - role: nginx_config
+    - role: nginxinc.nginx_config
       vars:
         nginx_config_http_template_enable: true
         nginx_config_http_template:

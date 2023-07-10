@@ -61,7 +61,7 @@ EOF
   }
 }
 
-resource "aws_instance" "rhel_7" {
+resource "aws_instance" "rhel_8" {
   ami           = data.aws_ami.rhel.id
   instance_type = var.machine_type
   key_name      = var.key_name
@@ -75,7 +75,7 @@ yum update
 yum install -y python3
 EOF
   tags = {
-    Name  = "rhel_7"
+    Name  = "rhel_8"
     Owner = var.key_name
     user  = "ec2-user"
     type  = "ansible"

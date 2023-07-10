@@ -84,7 +84,7 @@ data "aws_ami" "rhel" {
 
   filter {
     name   = "name"
-    values = ["RHEL-7.9_HVM-*"]
+    values = ["RHEL-8.8.0_HVM-*"]
   }
   filter {
     name   = "virtualization-type"
