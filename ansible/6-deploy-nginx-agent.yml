@@ -1,0 +1,34 @@
+---
+- name: Deploy NGINX Agent
+  hosts: aws_ec2
+  become: true
+  remote_user: "{{ hostvars[inventory_hostname]['tags']['user'] }}"
+  roles:
+    - role: nginxinc.nginx_config
+      vars:
+        nginx_config_rest_api_enable: true
+        nginx_config_rest_api_template_file: http/api.conf.j2
+        nginx_config_rest_api_file_location: /etc/nginx/conf.d/api.conf
+        nginx_config_rest_api_backup: true
+        nginx_config_rest_api_port: 8080
+        nginx_config_rest_api_write: true
+        nginx_config_rest_api_access_log:
+          path: /var/log/nginx/access.log
+          format: main
+
+    - role: nginxinc.nginx
+      vars:
+        nginx_enable: false
+        nginx_agent_enable: true
+        nginx_agent_configure: true
+        nginx_agent_server:
+          host: agent.connect.nginx.com
+          port: 443
+          data_plane_key: <data_plane_key>
+        nginx_agent_tls:
+          enable: true
+          skip_verify: false
+        nginx_agent_extensions: ['nginx-app-protect']
+        nginx_agent_app_protect:
+          report_interval: 15s
+          precompiled_publication: true

@@ -27,7 +27,7 @@ data "aws_ami" "debian" {
 
   filter {
     name   = "name"
-    values = ["debian-11-amd64-*"]
+    values = ["debian-12-amd64-*"]
   }
   filter {
     name   = "virtualization-type"
@@ -46,7 +46,7 @@ data "aws_ami" "ubuntu" {
 
   filter {
     name   = "name"
-    values = ["ubuntu/images/hvm-ssd/ubuntu-focal-20.04-amd64-server*"]
+    values = ["ubuntu/images/hvm-ssd/ubuntu-jammy-22.04-amd64-server*"]
   }
   filter {
     name   = "virtualization-type"
@@ -60,31 +60,12 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"]
 }
 
-data "aws_ami" "centos" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["CentOS Linux 7 x86_64 HVM EBS ENA*"]
-  }
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-  filter {
-    name   = "architecture"
-    values = ["x86_64"]
-  }
-
-  owners = ["461800378586"]
-}
-
 data "aws_ami" "rhel" {
   most_recent = true
 
   filter {
     name   = "name"
-    values = ["RHEL-8.8.0_HVM-*"]
+    values = ["RHEL-9.4.0_HVM-*"]
   }
   filter {
     name   = "virtualization-type"

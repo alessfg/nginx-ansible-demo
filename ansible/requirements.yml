@@ -1,11 +1,14 @@
 ---
 collections:
   - name: amazon.aws
-    version: 5.4.0
-  - name: nginxinc.nginx_core
-    version: 0.8.0
+    version: 8.1.0
 roles:
   - name: nginxinc.nginx
-    version: 0.24.1
+    src: https://github.com/nginxinc/ansible-role-nginx
+    version: agent-updates
   - name: nginxinc.nginx_config
-    version: 0.7.0
+    src: https://github.com/nginxinc/ansible-role-nginx-config
+    version: main
+  - name: nginxinc.nginx_app_protect
+    src: https://github.com/nginxinc/ansible-role-nginx-app-protect
+    version: main
